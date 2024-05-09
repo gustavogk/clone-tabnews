@@ -31,8 +31,8 @@ function Home() {
           em tristeza."
         </p>
       </div>
-      <div style={{ position: "relative", width: "470px", height: "670px" }}>
-        <Image src="/images/rengoku.png" layout="fill" objectFit="contain" />
+      <div>
+        <Image src="/images/rengoku.png" width={470} height={670} />
       </div>
     </div>
   );
