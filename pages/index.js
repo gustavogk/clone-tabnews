@@ -24,15 +24,15 @@ function Home() {
         }}
       >
         <p>
-          "Se estiver se sentindo desmotivado, ou achando que não é bom o
+          Se estiver se sentindo desmotivado, ou achando que não é bom o
           suficiente, incendeie 🔥 o seu coração💓. Enxugue as lágrimas e siga
           em frente. Quando se entristecer ou se acovardar, lembre-se: o fluxo
           do tempo nunca para, e ele não vai te esperar enquanto você se afoga
-          em tristeza."
+          em tristeza.
         </p>
       </div>
       <div>
-        <Image src="/images/rengoku.png" width={470} height={670} />
+        <Image src="/images/rengoku.png" alt="image" width={470} height={670} />
       </div>
     </div>
   );
