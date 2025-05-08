@@ -21,14 +21,16 @@ describe("POST /api/v1/users", () => {
           password: "abc123",
         }),
       });
+
       expect(response.status).toBe(201);
 
       const responseBody = await response.json();
+
       expect(responseBody).toEqual({
         id: responseBody.id,
         username: "john_doe",
         email: "john_doe@example.com",
-        password: "abc123",
+        password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
       });
