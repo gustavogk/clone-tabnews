@@ -1,15 +1,16 @@
-import database from "infra/database.js";
 import retry from "async-retry";
+import { faker } from "@faker-js/faker";
+
+import database from "infra/database.js";
 import migrator from "models/migrator.js";
 import user from "models/user.js";
-import { faker } from "@faker-js/faker";
 
 async function waitForAllServices() {
   await waitForWebServer();
 
   async function waitForWebServer() {
     return retry(fetchStatusPage, {
-      rettries: 100,
+      retries: 100,
       maxTimeout: 1000,
     });
 

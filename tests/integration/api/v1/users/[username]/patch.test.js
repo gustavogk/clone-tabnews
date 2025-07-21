@@ -1,5 +1,5 @@
-import orchestrator from "tests/orchestrator.js";
 import { version as uuidVersion } from "uuid";
+import orchestrator from "tests/orchestrator.js";
 import user from "models/user.js";
 import password from "models/password.js";
 
@@ -13,7 +13,7 @@ describe("PATCH /api/v1/users/[username]", () => {
   describe("Anonymous user", () => {
     test("With nonexistent 'username'", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/v1/users/nonexistentusername",
+        "http://localhost:3000/api/v1/users/UsuarioInexistente",
         {
           method: "PATCH",
         },
@@ -22,6 +22,7 @@ describe("PATCH /api/v1/users/[username]", () => {
       expect(response.status).toBe(404);
 
       const responseBody = await response.json();
+
       expect(responseBody).toEqual({
         name: "NotFoundError",
         message: "O username informado não foi encontrado no sistema.",
@@ -33,12 +34,10 @@ describe("PATCH /api/v1/users/[username]", () => {
     test("With duplicated 'username'", async () => {
       await orchestrator.createUser({
         username: "user1",
-        email: "user1@test.com",
       });
 
       await orchestrator.createUser({
         username: "user2",
-        email: "user2@test.com",
       });
 
       const response = await fetch("http://localhost:3000/api/v1/users/user2", {
@@ -65,11 +64,11 @@ describe("PATCH /api/v1/users/[username]", () => {
 
     test("With duplicated 'email'", async () => {
       await orchestrator.createUser({
-        email: "email1@test.com",
+        email: "email1@curso.dev",
       });
 
       const createdUser2 = await orchestrator.createUser({
-        email: "email2@test.com",
+        email: "email2@curso.dev",
       });
 
       const response = await fetch(
@@ -80,7 +79,7 @@ describe("PATCH /api/v1/users/[username]", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: "email1@test.com",
+            email: "email1@curso.dev",
           }),
         },
       );
